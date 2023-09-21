@@ -359,8 +359,9 @@ namespace MonitorUtils
                 destMi.cbSize = sizeof(destMi);
                 if (GetMonitorInfo(monitor, &destMi))
                 {
-                    RECT newPosition = FitOnScreen(placement.rcNormalPosition, originMi.rcWork, destMi.rcWork);
-                    FancyZonesWindowUtils::SizeWindowToRect(window, newPosition);
+                    RECT newSize = placement.showCmd == SW_SHOWMAXIMIZED ? destMi.rcWork : placement.rcNormalPosition;
+                    RECT newPosition = FitOnScreen(newSize, originMi.rcWork, destMi.rcWork);
+                    FancyZonesWindowUtils::SizeWindowToRect(window, newPosition, false);
                 }
             }
         }
