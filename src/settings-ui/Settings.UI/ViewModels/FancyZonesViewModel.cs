@@ -94,6 +94,7 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
             _allowChildWindowSnap = Settings.Properties.FancyzonesAllowChildWindowSnap.Value;
             _disableRoundCornersOnSnap = Settings.Properties.FancyzonesDisableRoundCornersOnSnap.Value;
             _highlightOpacity = Settings.Properties.FancyzonesHighlightOpacity.Value;
+            _alwaysMaximize = Settings.Properties.FancyzonesALwaysMaximize.Value;
             _excludedApps = Settings.Properties.FancyzonesExcludedApps.Value;
             _systemTheme = Settings.Properties.FancyzonesSystemTheme.Value;
             _showZoneNumber = Settings.Properties.FancyzonesShowZoneNumber.Value;
@@ -171,6 +172,7 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
         private bool _disableRoundCornersOnSnap;
 
         private int _highlightOpacity;
+        private string _alwaysMaximize;
         private string _excludedApps;
         private HotkeySettings _editorHotkey;
         private bool _windowSwitching;
@@ -872,6 +874,24 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
                     }
 
                     Settings.Properties.FancyzonesPrevTabHotkey.Value = _prevTabHotkey;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string AlwaysMaximize
+        {
+            get
+            {
+                return _alwaysMaximize;
+            }
+
+            set
+            {
+                if (value != _alwaysMaximize)
+                {
+                    _alwaysMaximize = value;
+                    Settings.Properties.FancyzonesALwaysMaximize.Value = value;
                     NotifyPropertyChanged();
                 }
             }

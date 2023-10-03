@@ -338,19 +338,26 @@ namespace MonitorUtils
     
     void OpenWindowOnActiveMonitor(HWND window, HMONITOR monitor) noexcept
     {
-        // By default Windows opens new window on primary monitor.
-        // Try to preserve window width and height, adjust top-left corner if needed.
-        HMONITOR origin = MonitorFromWindow(window, MONITOR_DEFAULTTOPRIMARY);
-        if (origin == monitor)
-        {
-            // Certain applications by design open in last known position, regardless of FancyZones.
-            // If that position is on currently active monitor, skip custom positioning.
-            return;
-        }
-
         WINDOWPLACEMENT placement{};
         if (GetWindowPlacement(window, &placement))
         {
+            // By default Windows opens new window on primary monitor.
+            // Try to preserve window width and height, adjust top-left corner if needed.
+            HMONITOR origin = MonitorFromWindow(window, MONITOR_DEFAULTTOPRIMARY);
+            if (FancyZonesWindowUtils::IsAlwaysMaximize(window))
+            {
+                // Skip if current window is always maximize by user setting
+                // and already SW_SHOWMAXIMIZED on currently active monitor
+                if (!FancyZonesWindowUtils::HasThickFrameAndMinimizeMaximizeButtons(window) || (placement.showCmd == SW_SHOWMAXIMIZED && origin == monitor))
+                {
+                    return;
+                }
+            } else if (origin == monitor)
+            {
+                // Certain applications by design open in last known position, regardless of FancyZones.
+                // If that position is on currently active monitor, skip custom positioning.
+                return;
+            }
             MONITORINFOEX originMi;
             originMi.cbSize = sizeof(originMi);
             if (GetMonitorInfo(origin, &originMi))
