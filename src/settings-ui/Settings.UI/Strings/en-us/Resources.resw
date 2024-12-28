@@ -773,6 +773,16 @@
   <data name="FancyZones_ExcludeApps.Description" xml:space="preserve">
     <value>Excludes an application from snapping to zones and will only react to Windows Snap - add one application name per line</value>
   </data>
+  <data name="FancyZones_AlwaysMaximize.Header" xml:space="preserve">
+    <value>Always maximize apps</value>
+  </data>
+  <data name="FancyZones_AlwaysMaximize.Description" xml:space="preserve">
+    <value>Require (Move newly created windows to the current active monitor) - add one application name per line</value>
+  </data>
+  <data name="FancyZones_AlwaysMaximize_TextBoxControl.PlaceholderText" xml:space="preserve">
+    <value>Example: outlook.exe</value>
+    <comment>Don't translate outlook.exe</comment>
+  </data>
   <data name="FancyZones_HighlightOpacity.Header" xml:space="preserve">
     <value>Opacity (%)</value>
   </data>

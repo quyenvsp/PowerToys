@@ -49,6 +49,7 @@ namespace Microsoft.PowerToys.Settings.UI.Library
             FancyzonesAllowPopupWindowSnap = new BoolProperty();
             FancyzonesAllowChildWindowSnap = new BoolProperty();
             FancyzonesDisableRoundCornersOnSnap = new BoolProperty();
+            FancyzonesALwaysMaximize = new StringProperty();
             FancyzonesExcludedApps = new StringProperty();
             FancyzonesInActiveColor = new StringProperty(ConfigDefaults.DefaultFancyZonesInActiveColor);
             FancyzonesBorderColor = new StringProperty(ConfigDefaults.DefaultFancyzonesBorderColor);
@@ -138,6 +139,9 @@ namespace Microsoft.PowerToys.Settings.UI.Library
 
         [JsonPropertyName("fancyzones_prevTab_hotkey")]
         public KeyboardKeysProperty FancyzonesPrevTabHotkey { get; set; }
+
+        [JsonPropertyName("fancyzones_always_maximize")]
+        public StringProperty FancyzonesALwaysMaximize { get; set; }
 
         [JsonPropertyName("fancyzones_excluded_apps")]
         public StringProperty FancyzonesExcludedApps { get; set; }

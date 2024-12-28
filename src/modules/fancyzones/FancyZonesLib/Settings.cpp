@@ -45,6 +45,7 @@ namespace NonLocalizable
     const wchar_t WindowSwitchingToggleID[] = L"fancyzones_windowSwitching";
     const wchar_t NextTabHotkeyID[] = L"fancyzones_nextTab_hotkey";
     const wchar_t PrevTabHotkeyID[] = L"fancyzones_prevTab_hotkey";
+    const wchar_t AlwaysMaximizeID[] = L"fancyzones_always_maximize";
     const wchar_t ExcludedAppsID[] = L"fancyzones_excluded_apps";
     const wchar_t ZoneHighlightOpacityID[] = L"fancyzones_highlight_opacity";
     const wchar_t ShowZoneNumberID[] = L"fancyzones_showZoneNumber";
@@ -203,6 +204,32 @@ void FancyZonesSettings::LoadSettings()
             {
                 m_settings.prevTabHotkey = PowerToysSettings::HotkeyObject::from_json(*val);
                 NotifyObservers(SettingId::PrevTabHotkey);
+            }
+        }
+
+        // always maximize apps
+        if (auto val = values.get_string_value(NonLocalizable::AlwaysMaximizeID))
+        {
+            std::wstring apps = std::move(*val);
+            std::vector<std::wstring> alwaysMaximize;
+            auto alwaysMaximizeUppercase = apps;
+            CharUpperBuffW(alwaysMaximizeUppercase.data(), static_cast<DWORD>(alwaysMaximizeUppercase.length()));
+            std::wstring_view view(alwaysMaximizeUppercase);
+            view = left_trim<wchar_t>(trim<wchar_t>(view));
+
+            while (!view.empty())
+            {
+                auto pos = (std::min)(view.find_first_of(L"\r\n"), view.length());
+                alwaysMaximize.emplace_back(view.substr(0, pos));
+                view.remove_prefix(pos);
+                view = left_trim<wchar_t>(trim<wchar_t>(view));
+            }
+
+            if (m_settings.alwaysMaximizeArray != alwaysMaximize)
+            {
+                m_settings.alwaysMaximize = apps;
+                m_settings.alwaysMaximizeArray = alwaysMaximize;
+                NotifyObservers(SettingId::AlwaysMaximize);
             }
         }
 
