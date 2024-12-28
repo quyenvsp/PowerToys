@@ -188,6 +188,26 @@
                     </tkcontrols:SettingsExpander>
 
                     <tkcontrols:SettingsExpander
+                        Name="FancyZonesAlwaysMaximize"
+                        x:Uid="FancyZones_AlwaysMaximize"
+                        IsExpanded="True">
+                        <tkcontrols:SettingsExpander.Items>
+                            <tkcontrols:SettingsCard HorizontalContentAlignment="Stretch" ContentAlignment="Vertical">
+                                <TextBox
+                                    x:Uid="FancyZones_AlwaysMaximize_TextBoxControl"
+                                    MinWidth="240"
+                                    MinHeight="160"
+                                    AcceptsReturn="True"
+                                    ScrollViewer.IsVerticalRailEnabled="True"
+                                    ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                    ScrollViewer.VerticalScrollMode="Enabled"
+                                    Text="{x:Bind ViewModel.AlwaysMaximize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    TextWrapping="Wrap" />
+                            </tkcontrols:SettingsCard>
+                        </tkcontrols:SettingsExpander.Items>
+                    </tkcontrols:SettingsExpander>
+
+                    <tkcontrols:SettingsExpander
                         Name="FancyZonesWindowSwitchingGroupSettings"
                         x:Uid="FancyZones_WindowSwitching_GroupSettings"
                         HeaderIcon="{ui:FontIcon Glyph=&#xEDA7;}"

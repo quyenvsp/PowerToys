@@ -68,6 +68,7 @@
 #define WindowSwitchingToggleKey "WindowSwitchingToggle"
 #define NextTabHotkey "NextTabHotkey"
 #define PrevTabHotkey "PrevTabHotkey"
+#define AlwaysMaximizeCountKey "AlwaysMaximizeCount"
 #define ExcludedAppsCountKey "ExcludedAppsCount"
 #define KeyboardValueKey "KeyboardValue"
 #define ActiveSetKey "ActiveSet"
@@ -324,6 +325,7 @@ void Trace::SettingsTelemetry(const Settings& settings) noexcept
         TraceLoggingBoolean(settings.windowSwitching, WindowSwitchingToggleKey),
         TraceLoggingWideString(nextTabHotkeyStr.c_str(), NextTabHotkey),
         TraceLoggingWideString(prevTabHotkeyStr.c_str(), PrevTabHotkey),
+        TraceLoggingInt32(static_cast<int>(settings.excludedAppsArray.size()), AlwaysMaximizeCountKey),
         TraceLoggingInt32(static_cast<int>(settings.excludedAppsArray.size()), ExcludedAppsCountKey));
 }
 
