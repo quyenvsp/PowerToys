@@ -26,6 +26,8 @@ namespace FancyZonesWindowUtils
 
     bool IsProcessOfWindowElevated(HWND window); // If HWND is already dead, we assume it wasn't elevated
     
+    bool IsAlwaysMaximize(HWND window);
+    bool HasThickFrameAndMinimizeMaximizeButtons(HWND window) noexcept;
     bool IsExcluded(HWND window);
     bool IsExcludedByUser(const HWND& hwnd, const std::wstring& processPath) noexcept;
     bool IsExcludedByDefault(const HWND& hwnd, const std::wstring& processPath) noexcept;

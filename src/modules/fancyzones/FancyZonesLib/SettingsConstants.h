@@ -31,6 +31,7 @@ enum class SettingId
     WindowSwitching,
     NextTabHotkey,
     PrevTabHotkey,
+    AlwaysMaximize,
     ExcludedApps,
     AllowSnapChildWindows,
     DisableRoundCornersOnSnapping,

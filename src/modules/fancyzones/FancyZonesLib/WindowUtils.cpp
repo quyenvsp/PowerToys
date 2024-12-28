@@ -142,6 +142,24 @@ bool FancyZonesWindowUtils::IsRoot(HWND window) noexcept
     return GetAncestor(window, GA_ROOT) == window;
 }
 
+bool FancyZonesWindowUtils::IsAlwaysMaximize(HWND window)
+{
+    std::wstring processPath = get_process_path_waiting_uwp(window);
+    CharUpperBuffW(const_cast<std::wstring&>(processPath).data(), static_cast<DWORD>(processPath.length()));
+    if (find_app_name_in_path(processPath, FancyZonesSettings::settings().alwaysMaximizeArray))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool FancyZonesWindowUtils::HasThickFrameAndMinimizeMaximizeButtons(HWND window) noexcept
+{
+    auto style = GetWindowLong(window, GWL_STYLE);
+    return ((style & WS_THICKFRAME) == WS_THICKFRAME && (style & WS_MINIMIZEBOX) == WS_MINIMIZEBOX && (style & WS_MAXIMIZEBOX) == WS_MAXIMIZEBOX);
+}
+
 bool FancyZonesWindowUtils::IsExcluded(HWND window)
 {
     std::wstring processPath = get_process_path_waiting_uwp(window);
@@ -226,9 +244,16 @@ void FancyZonesWindowUtils::SizeWindowToRect(HWND window, RECT rect, BOOL snapZo
     if (IsWindowVisible(window))
     {
         // If is not snap zone then need keep maximize state (move to active monitor)
-        if (!snapZone && placement.showCmd == SW_SHOWMAXIMIZED)
+        if (!snapZone)
         {
-            maximizeLater = true;
+            if (HasThickFrameAndMinimizeMaximizeButtons(window) && IsAlwaysMaximize(window))
+            {
+                placement.showCmd = SW_SHOWMAXIMIZED;
+            }
+            if (placement.showCmd == SW_SHOWMAXIMIZED)
+            {
+                maximizeLater = true;
+            }
         }
 
         // Do not restore minimized windows. We change their placement though so they restore to the correct zone.
