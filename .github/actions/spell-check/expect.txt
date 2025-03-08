@@ -1234,7 +1234,7 @@ psrm
 psrree
 pstatstg
 pstm
-PStr
+pstr
 pstream
 pstrm
 PSYSTEM
@@ -1716,6 +1716,7 @@ vcamp
 vcdl
 vcgtq
 VCINSTALLDIR
+vcm
 Vcpkg
 VCRT
 VCENTER
@@ -1735,6 +1736,7 @@ vget
 vgetq
 vid
 VIDCAP
+videoconferencevirtualdriver
 VIDEOINFOHEADER
 viewmodel
 vih
