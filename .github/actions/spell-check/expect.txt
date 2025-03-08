@@ -1279,7 +1279,7 @@ psrm
 psrree
 pstatstg
 pstm
-PStr
+pstr
 pstream
 pstrm
 pswd
@@ -1784,6 +1784,7 @@ vcamp
 VCENTER
 vcgtq
 VCINSTALLDIR
+vcm
 Vcpkg
 VCRT
 vcruntime
@@ -1799,6 +1800,10 @@ VERTSIZE
 VFT
 vget
 vgetq
+vid
+VIDCAP
+videoconferencevirtualdriver
+VIDEOINFOHEADER
 viewmodel
 VIRTKEY
 VIRTUALDESK

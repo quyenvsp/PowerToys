@@ -136,6 +136,10 @@ namespace winrt::PowerToys::GPOWrapper::implementation
     {
         return static_cast<GpoRuleConfigured>(powertoys_gpo::getConfiguredZoomItEnabledValue());
     }
+    GpoRuleConfigured GPOWrapper::GetConfiguredVideoConferenceMuteEnabledValue()
+    {
+        return static_cast<GpoRuleConfigured>(powertoys_gpo::getConfiguredVideoConferenceMuteEnabledValue());
+    }
     GpoRuleConfigured GPOWrapper::GetConfiguredMouseWithoutBordersEnabledValue()
     {
         return static_cast<GpoRuleConfigured>(powertoys_gpo::getConfiguredMouseWithoutBordersEnabledValue());
