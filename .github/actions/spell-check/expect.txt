@@ -1390,6 +1390,7 @@ psrree
 pstatstg
 pstm
 PStr
+pstr
 pstream
 pstrm
 PSYSTEM
@@ -1898,6 +1899,7 @@ vcamp
 VCENTER
 vcgtq
 VCINSTALLDIR
+vcm
 Vcpkg
 VCRT
 vcruntime
@@ -1915,6 +1917,11 @@ vget
 vgetq
 viewmodels
 virama
+vid
+VIDCAP
+videoconferencevirtualdriver
+VIDEOINFOHEADER
+viewmodel
 VIRTKEY
 VIRTUALDESK
 VISEGRADRELAY

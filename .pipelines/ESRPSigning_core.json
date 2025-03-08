@@ -30,6 +30,8 @@
 
             "Common.Search.dll",
 
+            "WebcamReportTool\\PowerToys.WebcamReportTool.exe",
+
             "PowerToys.AlwaysOnTop.exe",
             "PowerToys.AlwaysOnTopModuleInterface.dll",
 
@@ -227,6 +229,11 @@
             "PowerToys.ZoomIt.exe",
             "PowerToys.ZoomItModuleInterface.dll",
             "PowerToys.ZoomItSettingsInterop.dll",
+
+            "PowerToys.VideoConferenceModule.dll",
+            "PowerToys.VideoConferenceProxyFilter_x86.dll",
+            "PowerToys.VideoConferenceProxyFilter_x64.dll",
+            "PowerToys.VideoConferenceProxyFilter_arm64.dll",
 
             "WinUI3Apps\\PowerToys.Settings.dll",
             "WinUI3Apps\\PowerToys.Settings.exe",

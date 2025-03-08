@@ -51,6 +51,21 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
             set => Set(ref showCloseMenu, value);
         }
 
+        public bool IsVideoConferenceBuild
+        {
+            get
+            {
+                var mfHandle = NativeMethods.LoadLibrary("mf.dll");
+                bool mfAvailable = mfHandle != IntPtr.Zero;
+                if (mfAvailable)
+                {
+                    NativeMethods.FreeLibrary(mfHandle);
+                }
+
+                return this != null && File.Exists("PowerToys.VideoConferenceModule.dll") && mfAvailable;
+            }
+        }
+
         public NavigationViewItem Selected
         {
             get => selected;
