@@ -109,14 +109,15 @@ else {
 
 RestoreThenBuild '.\tools\BugReportTool\BugReportTool.sln'
 RestoreThenBuild '.\tools\StylesReportTool\StylesReportTool.sln'
+RestoreThenBuild '.\tools\WebcamReportTool\WebcamReportTool.sln'
 
 Write-Host '[CLEAN] installer (keep *.exe)'
 git clean -xfd -e '*.exe' -- .\installer\ | Out-Null
 
 RunMSBuild  '.\installer\PowerToysSetup.sln' '/t:restore /p:RestorePackagesConfig=true'
 
-RunMSBuild '.\installer\PowerToysSetup.sln' '/m /t:PowerToysInstaller /p:PerUser=true'
+RunMSBuild '.\installer\PowerToysSetup.sln' '/m /t:PowerToysInstaller /p:PerUser=false'
 
-RunMSBuild '.\installer\PowerToysSetup.sln' '/m /t:PowerToysBootstrapper /p:PerUser=true'
+RunMSBuild '.\installer\PowerToysSetup.sln' '/m /t:PowerToysBootstrapper /p:PerUser=false'
 
 Write-Host '[PIPELINE] Completed'
